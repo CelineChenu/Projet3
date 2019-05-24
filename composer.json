@@ -1,0 +1,17 @@
+{
+    "name": "line/projet3",
+    "authors": [
+        {
+            "name": "Celine Chenu",
+            "email": "celine.chenu1@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "require": {
+        "tinymce/tinymce": "^5.0"
+    }
+}
