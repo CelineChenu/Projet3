@@ -12,12 +12,16 @@ class Chapter
     private $chapterNumber;
     private $title;
     private $content;
+    private $comments=[];
 
 
 
-    public function __construct(array $data = null){
-        $this->hydrate($data);
-    }
+
+    public function __construct($values = null){
+        if ($values != null) {
+            $this->hydrate($values);
+        }
+        }
 
     public function hydrate(array $values)
     {
@@ -33,26 +37,79 @@ class Chapter
                 $this->$method($value);
             }
         }
+        return $this;
     }
 
-
+    /**
+     * @return int
+     */
     public function getId(): ?int {
         return $this->id;
     }
+
+    /**
+     * @param int $id
+     * @return $this
+     */
+    public function setId (int $id){
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getTitle(): ?string {
         return $this->title;
     }
+
+    /**
+     * @param string $title
+     * @return $this
+     */
+    public function setTitle(string $title){
+        $this->title = $title;
+        return $this;
+    }
+
+
+    /**
+     * @return string $content
+     */
     public function getContent(): ?string {
         return $this->content;
     }
+
+    /**
+     * @param string $content
+     * @return $this
+     */
+    public function setContent(string $content){
+        $this->content = $content;
+        return $this;
+
+    }
+
+    /**
+     * @return \DateTime
+     */
     public function getCreationDate()
     {
         return $this->creationDate;
     }
 
+    /**
+     * @param \DateTime $creationDate
+     * @return $this
+     */
+    public function setCreationDate($creationDate)
+    {
+        $this->creationDate = $creationDate;
+        return $this;
+    }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getEditionDate()
     {
@@ -60,7 +117,7 @@ class Chapter
     }
 
     /**
-     * @param mixed $editionDate
+     * @param \Datetime $editionDate
      */
     public function setEditionDate($editionDate)
     {
@@ -68,7 +125,7 @@ class Chapter
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getChapterNumber()
     {
@@ -76,26 +133,28 @@ class Chapter
     }
 
     /**
-     * @param mixed $chapterNumber
+     * @param int $chapterNumber
      */
     public function setChapterNumber(int $chapterNumber)
     {
         $this->chapterNumber = $chapterNumber;
     }
 
-    public function setTitle(string $title){
-            $this->title = $title;
-        return $this;
-
-    }
-    public function setContent(string $content){
-            $this->content = $content;
-        return $this;
-
-    }
-    public function setCreationDate($creationDate)
+    /**
+     * @return array
+     */
+    public function getComments(): array
     {
-        $this->creationDate = $creationDate;
-        return $this;
+        return $this->comments;
     }
+
+    /**
+     * @param array $comments
+     */
+    public function setComments(array $comments): void
+    {
+        $this->comments = $comments;
+    }
+
+
 }
