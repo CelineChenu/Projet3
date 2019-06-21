@@ -15,9 +15,11 @@ class Comment
     private $moderated;
 
 
-    public function __construct(array $data = null)
+    public function __construct(array $values = null)
     {
-        $this->hydrate($data);
+        if ($values != null) {
+            $this->hydrate($values);
+        }
     }
 
     public function hydrate(array $values)
@@ -37,39 +39,55 @@ class Comment
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getId()
-    {
+    public function getId(): ?int {
         return $this->id;
     }
 
     /**
-     * @param mixed $id
+     * @param int $id
+     * @return $this
      */
-    public function setId($id): void
-    {
+    public function setId(int $id){
         $this->id = $id;
+        return $this;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getUsername()
-    {
+    public function getContent(): ?string{
+        return $this->content;
+    }
+    /**
+     * @param string $content
+     * @return $this
+     */
+    public function setContent(string $content){
+        if (is_string($content)) {
+            $this->content = $content;
+        }
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): ?string{
         return $this->username;
     }
 
     /**
-     * @param mixed $username
+     * @param string $username
      */
-    public function setUsername($username): void
+    public function setUsername(string $username): void
     {
         $this->username = $username;
     }
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getCommentDate()
     {
@@ -77,7 +95,7 @@ class Comment
     }
 
     /**
-     * @param mixed $commentDate
+     * @param \DateTime $commentDate
      */
     public function setCommentDate($commentDate): void
     {
@@ -85,23 +103,22 @@ class Comment
     }
 
     /**
-     * @return mixed
+     * @return int
      */
-    public function getChapterId()
-    {
+    public function getChapterId(): ?int{
         return $this->chapterId;
     }
 
     /**
-     * @param mixed $chapterId
+     * @param int $chapterId
      */
-    public function setChapterId($chapterId): void
+    public function setChapterId(int $chapterId): void
     {
         $this->chapterId = $chapterId;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getReported()
     {
@@ -109,15 +126,15 @@ class Comment
     }
 
     /**
-     * @param mixed $reported
+     * @param bool $reported
      */
-    public function setReported($reported): void
+    public function setReported(bool $reported): void
     {
         $this->reported = $reported;
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
     public function getModerated()
     {
@@ -125,48 +142,10 @@ class Comment
     }
 
     /**
-     * @param mixed $moderated
+     * @param bool $moderated
      */
-    public function setModerated($moderated): void
+    public function setModerated(bool $moderated): void
     {
         $this->moderated = $moderated;
     }
-
-    public function getContent(){
-        return $this->content;
-    }
-    public function getUserId(){
-        return $this->userId;
-    }
-
-    public function getArticleId(){
-        return $this->articleId;
-    }
-
-
-
-
-    public function setContent($content){
-        if (is_string($content)) {
-            $this->content = $content;
-        }
-        return $this;
-    }
-    public function setUserId($userId){
-        $userId = (int)$userId;
-        if ($userId > 0) {
-            $this->userId = $userId;
-        }
-        return $this;
-    }
-
-    public function setArticleId($articleId){
-        $articleId=(int)$articleId;
-        if ($articleId > 0) {
-            $this->articleId=$articleId;
-        }
-        return $this;
-    }
-
-
 }

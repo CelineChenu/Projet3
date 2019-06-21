@@ -1,20 +1,19 @@
 <?php
 
 
-namespace App\Controller\Chapter;
+namespace App\Controller\Home;
 
 
 use App\Model\ChapterManager;
 
-class PostsController
+class HomeController
 {
-   public function chapters()
-    {
+    public function home(){
         $chapter = new ChapterManager();
         $lastChapter = $chapter->getLastChapter();
         $firstChapter = $chapter->getFirstChapter();
         $allChapters = $chapter->getAllChapters();
         $lastThreeChapters = $chapter->getLastThreeChapters();
-        require 'src/View/chapters.php';
+        require 'src/View/index/home.php';
     }
 }
