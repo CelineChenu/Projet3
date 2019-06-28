@@ -7,8 +7,8 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
 
-                <a class="nav-item nav-link" href="home">Accueil <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="chapters">Chapitres</a>
+                <a class="nav-item nav-link" href="/">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="chapitres">Chapitres</a>
                 <a class="nav-item nav-link" href="contact">Contact</a>
 
             </div>

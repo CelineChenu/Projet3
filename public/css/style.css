@@ -1,0 +1,42 @@
+* {
+    font-family: 'Roboto', Verdana, Tahoma, sans-serif;
+    padding: 0;
+    margin: 0;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #FFFFFF;
+    background-size: 100%;
+    position: relative;
+    padding: 45px 0;
+}
+
+.homeBanner {
+    height:300px;
+    width : 100%;
+    background: url("../img/header.png");
+    display: block;
+    position: relative;
+}
+
+.headerTitle {
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+p
+{
+    padding: 3px;
+}
+
+h4{
+    font-weight: bold;
+}
+
+h5 {
+    font-style: italic;
+}
+

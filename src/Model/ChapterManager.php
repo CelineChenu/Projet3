@@ -33,7 +33,7 @@ class ChapterManager extends DbManager
     }
 
     public function getAllChapters() {
-        $req=$this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %H:%i\') AS creationDate FROM chapter ORDER BY creation_date');
+        $req=$this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %H:%i\') AS creationDate, chapter_number FROM chapter ORDER BY creation_date');
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         $chapters = [];
         foreach($result as $data){
@@ -65,6 +65,7 @@ class ChapterManager extends DbManager
             $chapter->setChapterNumber($data['chapter_number']);
             $chapter->setTitle($data['title']);
             $chapter->setContent($data['content']);
+            $chapter->setCreationDate($data['creationDate']);
 
         if ($data['comment_id']){
             $comment = new Comment();
@@ -72,6 +73,7 @@ class ChapterManager extends DbManager
             $comment->setId($data['comment_id']);
             $comment->setUsername($data['username']);
             $comment->setContent($data['comment_content']);
+            $comment->setCommentDate($data['commentDate']);
 
             $comments[] = $comment;
              }
