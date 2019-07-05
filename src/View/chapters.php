@@ -8,8 +8,8 @@ ob_start(); ?>
 
                 <h4>Chapitre <?= $c->getChapterNumber(); ?></h4>
                 <h5><?= $c->getTitle(); ?></h5>
-                <p><?= substr($c->getContent(),0 ,200); ?>... <a href="chapitre/<?= $c->getId()?>">Lire la suite</a></p>
-                <p> <?= $c->getCreationDate(); ?></p>
+                <p class="date">Publié le <?= $c->getCreationDate(); ?></p>
+                <p><?= substr($c->getContent(),0 ,400); ?>... <a href="chapitre/<?= $c->getId()?>">Lire la suite</a></p>
 
             <?php endforeach; ?>
         </section>

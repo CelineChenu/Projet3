@@ -27,6 +27,16 @@ body {
     left: 10%;
 }
 
+.date{
+    font-size: 0.875em;
+    text-decoration: underline;
+}
+
+.username {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
 p
 {
     padding: 3px;

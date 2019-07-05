@@ -7,10 +7,8 @@ ob_start(); ?>
               <h4>Le premier chapitre</h4>
 
               <h5><?= $firstChapter->getTitle(); ?></h5>
-
-              <p><?= substr($firstChapter->getContent(),0 ,200); ?>... <a href="chapitre/<?= $firstChapter->getId()?>">Lire la suite</a></p>
-
-              <p><?= $firstChapter->getCreationDate(); ?></p>
+              <p class="date">Publié le <?= $firstChapter->getCreationDate(); ?></p>
+              <p><?= substr($firstChapter->getContent(),0 ,1800); ?>... <a href="chapitre/<?= $firstChapter->getId()?>">Lire la suite</a></p>
 
           </section>
 
@@ -46,8 +44,8 @@ ob_start(); ?>
               <div class="row"><?php foreach($lastThreeChapters as $tc): ?>
                       <article class="col-md-3 col-md-offset-1">
                           <h5><?= $tc->getTitle(); ?></h5>
+                          <p class="date">Publié le <?= $tc->getCreationDate(); ?></p>
                           <p><?= substr($tc->getContent(),0 ,200); ?>... <a href="chapitre/<?= $tc->getId()?>">Lire la suite</a></p>
-                          <p> <?= $tc->getCreationDate(); ?></p>
                       </article>
 
                   <?php endforeach; ?>
