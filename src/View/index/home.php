@@ -7,25 +7,16 @@ ob_start(); ?>
               <h4>Le premier chapitre</h4>
 
               <h5><?= $firstChapter->getTitle(); ?></h5>
+              <p class="date">Publié le <?= $firstChapter->getCreationDate(); ?></p>
+              <p><?= substr($firstChapter->getContent(),0 ,1800); ?>... <a href="chapitre/<?= $firstChapter->getId()?>">Lire la suite</a></p>
 
-              <p><?= $firstChapter->getContent(); ?></p>
-
-              <p><?= $firstChapter->getCreationDate(); ?></p>
-
-
-              <h4>Les trois derniers chapitres</h4>
-              <?php foreach($lastThreeChapters as $tc): ?>
-              <h5><?= $tc->getTitle(); ?></h5>
-                  <p><?= substr($tc->getContent(),0 ,200); ?>... <a href="chapitre/<?= $tc->getId()?>">Lire la suite</a></p>
-                  <p> <?= $tc->getCreationDate(); ?></p>
-
-              <?php endforeach; ?>
           </section>
+
 
           <section class="col-sm-3">
               <h4>L'auteur : </h4>
               <aside>
-                  <img src="https://cdn.icon-icons.com/icons2/1736/PNG/512/4043279-afro-avatar-male-man_113244.png"
+                  <img src=".\public\img\auteur.png"
                        alt="Jean Forteroche, auteur de Billet Simple pour l'Alaska" height="160" width="170"
                        class="mx-auto d-block">
                   <h5>Jean Forteroche</h5>
@@ -34,20 +25,35 @@ ob_start(); ?>
               <h4>Réseaux sociaux</h4>
               <aside id="social">
                     <span id="facebook" class="socialLink">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
                     </span>
                   <span id="twitter" class="socialLink">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
                     </span>
                   <span id="instagram" class="socialLink">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
                     </span>
                   <span id="linkedin" class="socialLink">
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
                     </span>
               </aside>
           </section>
       </div>
+          <section>
+              <h4>Les trois derniers chapitres</h4>
+              <div class="row"><?php foreach($lastThreeChapters as $tc): ?>
+                      <article class="col-md-3 col-md-offset-1">
+                          <h5><?= $tc->getTitle(); ?></h5>
+                          <p class="date">Publié le <?= $tc->getCreationDate(); ?></p>
+                          <p><?= substr($tc->getContent(),0 ,200); ?>... <a href="chapitre/<?= $tc->getId()?>">Lire la suite</a></p>
+                      </article>
+
+                  <?php endforeach; ?>
+              </div>
+          </section>
+
+
+
 
 <?php
 $content=ob_get_clean();

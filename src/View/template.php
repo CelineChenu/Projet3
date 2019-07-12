@@ -8,24 +8,28 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Blog de Jean Forteroche</title>
+    <link href="http://localhost/projet3/public/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
 </head>
 
 <body>
     <header >
        <?php require "src/View/nav.php"
     ?>
-
     </header>
-<div class="row homeBanner">
+<div class="homeBanner">
     <div class="headerTitle">
-        <div class="title col-sm-8 mx-auto">
+        <div class="title">
             <h1 class="mt-2">Billet simple pour l'Alaska</h1>
             <h2>Jean Forteroche</h2>
         </div>
     </div>
 </div>
 
-<?= $content; ?>
+<main class="container-fluid"><?= $content; ?></main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
