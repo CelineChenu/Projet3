@@ -10,7 +10,7 @@ require 'vendor/autoload.php';
 
 class ContactMail
 {
-    public function sendContactMail() {
+    public function sendContactMail($name,$message) {
 // Instantiation and passing `true` enables exceptions
         $mail = new PHPMailer(true);
 
@@ -26,15 +26,8 @@ class ContactMail
             $mail->Port       = 465;                                    // TCP port to connect to
 
             //Recipients
-            $mail->setFrom('from@example.com', 'Mailer');
-            $mail->addAddress('joe@example.net', 'Joe User');     // Add a recipient
-            $mail->addAddress('ellen@example.com');               // Name is optional
-            $mail->addReplyTo('info@example.com', 'Information');
-
-
-            // Attachments
-            $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-            $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+            $mail->setFrom(MailLog::EMAIL, 'Mailer');
+            $mail->addAddress(MailLog::EMAIL, 'Jean Forteroche');     // Add a recipient
 
             // Content
             $mail->isHTML(true);                                  // Set email format to HTML

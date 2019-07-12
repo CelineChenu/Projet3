@@ -2,6 +2,7 @@
 
 
 namespace App\Model;
+
 use \PDO;
 
 class ChapterManager extends DbManager
@@ -56,7 +57,7 @@ class ChapterManager extends DbManager
 
     public function getChapter(Chapter $chapter)
     {
-        $req = $this->db->prepare('SELECT ch.id, ch.title, ch.content, ch.chapter_number, DATE_FORMAT(ch.creation_date, \'%d/%m/%Y\') AS creationDate,co.id AS comment_id, co.content AS comment_content, co.username, DATE_FORMAT(co.comment_date, \'%d/%m/%Y\') AS commentDate FROM chapter as ch LEFT JOIN comment as co ON ch.id = co.chapter_id WHERE ch.id = ?');
+        $req = $this->db->prepare('SELECT ch.id, ch.title, ch.content, ch.chapter_number, DATE_FORMAT(ch.creation_date, \'%d/%m/%Y\') AS creationDate,co.id AS comment_id, co.content AS comment_content, co.username, DATE_FORMAT(co.comment_date, \'%d/%m/%Y\') AS commentDate, co.reported, co.moderated  FROM chapter as ch LEFT JOIN comment as co ON ch.id = co.chapter_id WHERE ch.id = ?');
         $req->execute([$chapter->getId()]);
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         $comments = [];
@@ -74,6 +75,7 @@ class ChapterManager extends DbManager
             $comment->setUsername($data['username']);
             $comment->setContent($data['comment_content']);
             $comment->setCommentDate($data['commentDate']);
+            $comment->setReported($data['reported']);
 
             $comments[] = $comment;
              }

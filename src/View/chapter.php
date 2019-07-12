@@ -44,10 +44,10 @@ ob_start(); ?>
     <?php foreach ($result->getComments() as $co): ?>
         <div class="col-sm-8 offset-sm-1">
             <p class="date">Commentaire posté le <?= $co->getCommentDate(); ?> : </p>
-            <p class="username"><?= $co->getUsername(); ?></p>
+            <p class="username"><?= htmlspecialchars($co->getUsername()) ; ?></p>
             <p>
-                <?php if ($co->getReported() == 1) :
-                    echo '<i>Ce commentaire a été signalé, nous sommes en train de l\'analyser.</i>';
+                <?php if ($co->getReported()== true) :
+                    echo '<i>Ce commentaire a été signalé et est en cours de modération.</i>';
                 else :
                 echo htmlspecialchars($co->getContent());
                 ?>
@@ -62,40 +62,20 @@ ob_start(); ?>
     <div class="col-sm-6">
         <h4>Publier un commentaire</h4>
         <article class="post">
-            <form action='/chapter?id=<?= $chapter->getId(); ?>' method="post">
-                <?php if (isset($errorsForm['insertion'])) :
-                    echo '<div class="alert alert-danger mx-auto text-center" style="font-size: large"><b>' . $errorsForm['insertion'] . '</b></div>';
-                elseif (isset($errorsForm['success'])) :
-                    echo '<div class="alert alert-success mx-auto text-center" style="font-size: large"><b>' . $errorsForm['success'] . '</b></div>';
-                endif; ?>
+            <?php if(isset($_SESSION['comment-error'])) :?>
+                <div> <?= $_SESSION['comment-error'] ?></div>
+                <?php unset($_SESSION['comment-error']); endif; ?>
+            <form action='http://localhost/projet3/ajouter-commentaire' method="post">
                 <div class="form-group ">
                     <label class="control-label " for="username">Votre nom</label>
-                    <input class="form-control
-                                <?php if (isset($errorsForm['author'])) :
-                        echo ' error-form';
-                    endif; ?>"
-                           id="username" name="username" type="text"
-                           required
-                        <?php if (isset($_POST['username'])) :
-                            echo 'value="' . htmlspecialchars($_POST['username']) . '"';
-                        endif; ?>/>
-                    <?php if (isset($errorsForm['username'])) :
-                        echo '<p class="error-text"> ' . $errorsForm['username'] . '</p>';
-                    endif; ?>
+                    <input class="form-control" id="username" name="username" type="text" required/>
+
                 </div>
                 <div class="form-group ">
-                    <label class="control-label" for="comment">Commentaire</label>
-                    <textarea class="form-control
-                            <?php if (isset($errorsForm['comment'])) :
-                        echo ' error-form';
-                    endif; ?>"
-                              id="comment" name="comment" required><?php if (isset($_POST['comment'])) :
-                            echo htmlspecialchars($_POST['comment']);
-                        endif; ?></textarea>
-                    <?php if (isset($errorsForm['comment'])) :
-                        echo '<p class="error-text"> ' . $errorsForm['comment'] . '</p>';
-                    endif; ?>
+                    <label class="control-label" for="content">Commentaire</label>
+                    <textarea class="form-control" id="content" name="content" required></textarea>
                 </div>
+                <input type="hidden" value="<?= $result->getId(); ?>" name="chapter_id">
                 <div class="form-group">
                     <div>
                         <button class="submitBtn" name="envoyer" value="envoyer" type="submit">
