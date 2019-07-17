@@ -7,7 +7,7 @@ ob_start(); ?>
             <p>
                 Envoyez-moi votre message via ce formulaire, je vous répondrais au plus vite !
             </p>
-            <form role="form" method="post" id="reused_form">
+            <form action='http://localhost/projet3/envoyer-mail' method="post">
 
                 <div class="row">
                     <div class="col-sm-9 form-group">
@@ -27,27 +27,25 @@ ob_start(); ?>
                     <div class="col-sm-12 form-group">
                         <label for="message">
                             Votre message:</label>
-                        <textarea class="form-control" type="textarea" name="message" id="message" maxlength="6000" rows="7"></textarea>
+                        <textarea class="form-control" name="message" id="message" maxlength="6000" rows="7" required></textarea>
                     </div>
                 </div>
 
-
+                <div class="row">
+                    <div class="col-sm-12">
+                        <input type="checkbox" name="consent" id="consent" value="1"> <label for="consent">En cochant cette case, vous acceptez la politique de confidentialité de ce site.</label>
+                    </div>
+                </div>
+                <div id="anchor-contact-error"><?php if(isset($_SESSION['contact-error'])): ?>
+                    <p> <?= $_SESSION['contact-error']; ?></p>
+                    <?php unset($_SESSION['contact-error']);
+                endif;?></div>
                 <div class="row">
                     <div class="col-sm-12 form-group">
                         <button type="submit" class="btn btn-lg btn-default pull-right" >Envoyer →</button>
                     </div>
                 </div>
-
             </form>
-            <div id="success_message" style="width:100%; height:100%; display:none; ">
-                <h3>Votre message a bien été envoyé !</h3>
-            </div>
-            <div id="error_message"
-                 style="width:100%; height:100%; display:none; ">
-                <h3>Error</h3>
-                Désolé, il y a une erreur dans le formulaire.
-
-            </div>
         </div>
     </div>
 
