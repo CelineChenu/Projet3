@@ -7,7 +7,7 @@ ob_start(); ?>
             <p>
                 Envoyez-moi votre message via ce formulaire, je vous répondrais au plus vite !
             </p>
-            <form action='http://localhost/projet3/envoyer-mail' method="post">
+            <form action='<?= HOST ?>envoyer-mail' method="post">
 
                 <div class="row">
                     <div class="col-sm-9 form-group">

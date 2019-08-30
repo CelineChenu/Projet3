@@ -17,6 +17,12 @@ class ChapterManager extends DbManager
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
+    public function getAdminChapters() {
+        $req = $this->db->query('SELECT id, chapter_number, title, content, DATE_FORMAT(creation_date,\'%d/%m/%Y %Hh:%imin:%ss\') 
+        AS creationDate FROM chapter ORDER BY creationDate DESC LIMIT 0, 3');
+        return $req->fetchAll();
+
+    }
 
     public function getLastChapter() {
         $req=$this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 1');
@@ -76,6 +82,7 @@ class ChapterManager extends DbManager
             $comment->setContent($data['comment_content']);
             $comment->setCommentDate($data['commentDate']);
             $comment->setReported($data['reported']);
+            $comment->setModerated($data['moderated']);
 
             $comments[] = $comment;
              }
@@ -83,4 +90,57 @@ class ChapterManager extends DbManager
         $chapter->setComments($comments);
         return $chapter;
     }
+
+    public function numberChapter() {
+        $number = $this->db->query('SELECT COUNT(*) AS nb FROM chapter');
+        return $number->fetch();
+    }
+
+    public function chapterAdded(Chapter $chapter)
+    {
+        $req = $this->db->prepare('INSERT INTO chapter(title, chapter_number, content, creation_date) VALUES (:title,:chapter_number,:content,NOW())');
+        $req->bindValue(':title', $chapter->getTitle());
+        $req->bindValue(':chapter_number', $chapter->getChapterNumber());
+        $req->bindValue(':content', $chapter->getContent());
+
+        $req->execute();
+
+        }
+
+    public function chapterEdited(Chapter $chapter) {
+
+        $req = $this->db->prepare('UPDATE chapter SET chapter_number = :chapter_number, title = :title, content = :content, edition_date = NOW()  WHERE id = :id');
+
+        $req->bindValue(':chapter_number', $chapter->getChapterNumber());
+        $req->bindValue(':title', $chapter->getTitle());
+        $req->bindValue(':content', $chapter->getContent());
+        $req->bindValue(':id', $chapter->getId());
+        $result = $req->execute();
+
+        return $result;
+    }
+
+    public function editionChapter($id){
+        $req = $this->db->prepare('SELECT id, chapter_number, title, content FROM chapter WHERE id = ?');
+        $req->execute([$id]);
+        $results = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($results as $data) {
+            $chapter = new Chapter();
+            $chapter->setId($data['id']);
+            $chapter->setChapterNumber($data['chapter_number']);
+            $chapter->setTitle($data['title']);
+            $chapter->setContent($data['content']);
+            return $chapter;
+
+        }
+    }
+
+    public function deleteChapter($id) {
+
+        $chapter = $this->db->prepare('DELETE FROM chapter WHERE id = ?');
+        $deleteChapter = $chapter->execute(array($id));
+        return $deleteChapter;
+    }
+
 }

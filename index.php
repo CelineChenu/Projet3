@@ -1,6 +1,7 @@
         <?php
         session_start();
         require 'vendor/autoload.php';
+        define('HOST', "http://localhost/projet3/");
 
         $router = new App\Router\Router($_GET['url']);
 
@@ -11,4 +12,22 @@
         $router->post('/ajouter-commentaire', "Comment\Comment#addComment");
         $router->get('/contact', "Contact\Contact#contact");
         $router->post('/envoyer-mail', "Contact\Contact#sendMail");
+        $router->get('/identification', "User\User#login");
+        $router->post('/login', "User\User#auth");
+        $router->get('/newuser', "User\User#newUser");
+        $router->post('/adduser',"User\User#addUser");
+        $router->get('/administration', "User\User#admin");
+        $router->get('/logout',"User\User#sessionFinish");
+        $router->get('/moderation',"Comment\Comment#moderationComments");
+        $router->get('/gestion-chapitres',"Chapter\Posts#chapterManagement");
+        $router->get('/nouveau-chapitre',"Chapter\Post#chapterCreation");
+        $router->get('/modifier-chapitre/:id',"Chapter\Post#chapterEdition")->with('id', '[0-9]+');
+        $router->get('/supprimer-chapitre/:id',"Chapter\Post#deleteChapter")->with('id', '[0-9]+');
+        $router->post('/add-chapter',"Chapter\Post#addChapter");
+        $router->post('/edit-chapter',"Chapter\Post#editChapter");
+        $router->get('/valider-commentaire/:id_comment', "Comment\Comment#validateComment")->with('id_comment', '[0-9]+');
+        $router->get('/moderer-commentaire/:id_comment', "Comment\Comment#moderateComment")->with('id_comment', '[0-9]+');
+
+        $router->get('/route-test', "Home\Home#test");
+
         $router->run();

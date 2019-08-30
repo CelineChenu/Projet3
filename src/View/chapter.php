@@ -48,11 +48,13 @@ ob_start(); ?>
             <p>
                 <?php if ($co->getReported()== true) :
                     echo '<i>Ce commentaire a été signalé et est en cours de modération.</i>';
+                elseif ($co->getModerated()== true) :
+                    echo '<i>Ce commentaire a été supprimé par le modérateur.</i>';
                 else :
                 echo htmlspecialchars($co->getContent());
                 ?>
             </p>
-            <a title="Signaler ce commentaire" href="http://localhost/projet3/signaler-commentaire/<?= $result->getId(); ?>-<?= $co->getId(); ?>" onclick="return confirm('Êtes-vous sûr.e de vouloir signaler ce commentaire ?')"> <i class="fas fa-exclamation-triangle"></i>
+            <a title="Signaler ce commentaire" href="<?= HOST ?>signaler-commentaire/<?= $result->getId(); ?>-<?= $co->getId(); ?>" onclick="return confirm('Êtes-vous sûr.e de vouloir signaler ce commentaire ?')"> <i class="fas fa-exclamation-triangle"></i>
             </a>
             <?php endif; ?>
         </div>
@@ -65,7 +67,7 @@ ob_start(); ?>
             <?php if(isset($_SESSION['comment-error'])) :?>
                 <div> <?= $_SESSION['comment-error'] ?></div>
                 <?php unset($_SESSION['comment-error']); endif; ?>
-            <form action='http://localhost/projet3/ajouter-commentaire' method="post">
+            <form action='<?= HOST ?>ajouter-commentaire' method="post">
                 <div class="form-group ">
                     <label class="control-label " for="username">Votre nom</label>
                     <input class="form-control" id="username" name="username" type="text" required/>
