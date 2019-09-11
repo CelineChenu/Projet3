@@ -22,11 +22,9 @@ class UserManager extends DbManager
         $req->execute();
         $data = $req->fetch(PDO::FETCH_ASSOC);
         $user->setLogin($data['login']);
+        $user->setUsername($data['username']);
         $user->setPassword($data['password']);
         return $user;
-
-
-
     }
 
     public function userAdded(User $user)
@@ -36,6 +34,5 @@ class UserManager extends DbManager
         $req->bindValue(':login', $user->getLogin());
         $req->bindValue(':password',  $user->getPassword());
         $req->execute();
-
     }
 }

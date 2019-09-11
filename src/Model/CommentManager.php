@@ -23,14 +23,16 @@ class CommentManager extends DbManager
         return $comment;
     }
 
-    public function numberComment() {
+    public function numberComment()
+    {
         $number = $this->db->query('SELECT COUNT(*) AS nb FROM comment');
         return $number->fetch();
     }
 
-    public function lastComments() {
-        $comments = $this->db->query('SELECT chapter_id, username, content, DATE_FORMAT(comment_date, \'%d/%m/%Y %Hh:%imin:%ss\')
-        AS creationDate FROM comment ORDER BY creationDate DESC LIMIT 0, 3');
+    public function lastComments()
+    {
+        $comments = $this->db->query('SELECT chapter_id, username, content, DATE_FORMAT(comment_date, \'le %d/%m/%Y à %H:%i\')
+        AS commentDate FROM comment ORDER BY comment_date DESC LIMIT 0, 3');
         return $comments->fetchAll();
     }
 
@@ -55,7 +57,8 @@ class CommentManager extends DbManager
         return $result;
     }
 
-    public function numberReports() {
+    public function numberReports()
+    {
         $number = $this->db->query('SELECT COUNT(*) AS nb FROM comment WHERE reported = 1');
         return $number->fetch();
     }
@@ -68,7 +71,8 @@ class CommentManager extends DbManager
 
         $comments = array();
 
-        foreach ($result as $data) {
+        foreach ($result as $data)
+        {
             $comment = new Comment();
             $comment->setId($data['id']);
             $comment->setUsername($data['username']);
@@ -88,14 +92,15 @@ class CommentManager extends DbManager
 
         $commentsModerated = array();
 
-        foreach ($result as $data) {
-            $comment = new Comment();
-            $comment->setId($data['id']);
-            $comment->setUsername($data['username']);
-            $comment->setContent($data['content']);
-            $comment->setCommentDate($data['comment_date']);
-            $commentsModerated[] = $comment;
-        }
+        foreach ($result as $data)
+            {
+                $comment = new Comment();
+                $comment->setId($data['id']);
+                $comment->setUsername($data['username']);
+                $comment->setContent($data['content']);
+                $comment->setCommentDate($data['comment_date']);
+                $commentsModerated[] = $comment;
+            }
 
         return $commentsModerated;
     }

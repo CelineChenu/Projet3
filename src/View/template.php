@@ -20,16 +20,16 @@
        <?php require "src/View/nav.php"
     ?>
     </header>
-<div class="homeBanner">
-    <div class="headerTitle">
-        <div class="title">
-            <h1 class="mt-2">Billet simple pour l'Alaska</h1>
-            <h2>Jean Forteroche</h2>
+    <div class="homeBanner">
+        <div class="headerTitle">
+            <div class="title">
+                <h1 class="mt-2">Billet simple pour l'Alaska</h1>
+                <h2>Jean Forteroche</h2>
+            </div>
         </div>
     </div>
-</div>
 
-<main class="container-fluid"><?= $content; ?></main>
+    <main class="container-fluid"><?= $content; ?></main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

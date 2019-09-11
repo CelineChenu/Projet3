@@ -6,11 +6,11 @@ ob_start(); ?>
 
             <?php foreach($allChapters as $c): ?>
 
-                <h4>Chapitre <?= $c->getChapterNumber(); ?></h4>
+                <h4 class="chapter">Chapitre <?= $c->getChapterNumber(); ?></h4>
                 <h5><?= $c->getTitle(); ?></h5>
                 <p class="date">Publié le <?= $c->getCreationDate(); ?></p>
-                <p><?= substr($c->getContent(),0 ,400); ?>... <a href="chapitre/<?= $c->getId()?>">Lire la suite</a></p>
-
+                <p><?= substr($c->getContent(),0 ,400); ?>... </p>
+                <p><a href="chapitre/<?= $c->getId()?>" class="button">Lire la suite</a></p>
             <?php endforeach; ?>
         </section>
 
@@ -26,22 +26,20 @@ ob_start(); ?>
             <h4>Réseaux sociaux</h4>
             <aside id="social">
                     <span id="facebook" class="socialLink">
-                        <a href="#"><i class="fab fa-facebook-f fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-facebook-square fa-2x"></i></a>
                     </span>
                 <span id="twitter" class="socialLink">
-                        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-twitter-square fa-2x"></i></a>
                     </span>
                 <span id="instagram" class="socialLink">
                         <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
                     </span>
                 <span id="linkedin" class="socialLink">
-                        <a href="#"><i class="fab fa-linkedin-in fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-linkedin fa-2x"></i></a>
                     </span>
             </aside>
         </section>
     </div>
 
-<?php
-$content=ob_get_clean();
-require "src/View/template.php";
-?>
+<?php $content=ob_get_clean();?>
+<?php require "src/View/template.php"; ?>

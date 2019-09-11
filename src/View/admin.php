@@ -62,9 +62,9 @@
                 <table class="table table-borderless table-striped table-light table-hover">
                     <thead>
                     <tr>
-                        <th>Numéro</th>
                         <th>Chapitre</th>
-                        <th>Date</th>
+                        <th>Titre</th>
+                        <th>Date de publication</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -92,8 +92,8 @@
                     <tr>
                         <th>Auteurs</th>
                         <th>Commentaires</th>
-                        <th>Chapitre dédié</th>
-                        <th>Date</th>
+                        <th>Chapitre lié au commentaire</th>
+                        <th>Date de publication</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -101,9 +101,9 @@
                         <?php foreach ($comments as $data_comment): ?>
                             <tr>
                                 <td><?= htmlspecialchars($data_comment['username']); ?></td>
-                                <td> <?= nl2br(htmlspecialchars(substr($data_comment['content'], 0, 100))).'...' ?> </td>
-                                <td> <?= $data_comment['chapter_id'] ?> </td>
-                                <td> <?= $data_comment['creationDate'] ?> </td>
+                                <td> <?= nl2br(htmlspecialchars(substr($data_comment['content'], 0, 100))) ?> </td>
+                                <td> Chapitre <?= $data_comment['chapter_id'] ?> </td>
+                                <td> <?= $data_comment['commentDate'] ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -114,7 +114,5 @@
     </main>
 
 
-<?php
-$content=ob_get_clean();
-require "src/View/templateadmin.php";
-?>
+<?php $content=ob_get_clean();?>
+<?php require "src/View/templateadmin.php"; ?>

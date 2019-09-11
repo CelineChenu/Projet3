@@ -8,7 +8,8 @@ use App\Model\ChapterManager;
 
 class HomeController
 {
-    public function home(){
+    public function home()
+    {
         $chapter = new ChapterManager();
         $lastChapter = $chapter->getLastChapter();
         $firstChapter = $chapter->getFirstChapter();
@@ -17,20 +18,20 @@ class HomeController
         require 'src/View/index/home.php';
     }
 
-    public function test(){
-
+    public function test()
+    {
         $password = 'test';
         echo password_hash($password, PASSWORD_DEFAULT);
         $hash = password_hash($password, PASSWORD_DEFAULT);
-        if (password_verify('Test', $hash)) {
-            echo 'Le mot de passe est valide !';
-        } else {
-            echo 'Le mot de passe est invalide.';
-        }
+        if (password_verify('Test', $hash))
+            {
+                echo 'Le mot de passe est valide !';
+            }
+        else
+            {
+                echo 'Le mot de passe est invalide.';
+            }
         exit;
-
-
-
     }
 }
 

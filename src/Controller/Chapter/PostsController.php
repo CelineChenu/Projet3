@@ -26,5 +26,4 @@ class PostsController
         $allChapters = $chapter->getAllChapters();
         require 'src/View/chaptermanagment.php';
     }
-
 }

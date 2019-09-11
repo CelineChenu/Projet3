@@ -19,11 +19,8 @@ class PostController
     public function chapterCreation()
     {
        if (!isset($_SESSION['auth'])) {header('location:http://localhost/projet3/identification');}
-
         $chapter = new ChapterManager();
         require 'src/View/chaptercreation.php';
-
-
     }
 
 
@@ -47,7 +44,6 @@ class PostController
 
 
     public function chapterEdition($id)
-
     {
         if (! isset($_SESSION['auth'])) {header('Location:http://localhost/projet3/identification');};
         $chapterManager = new ChapterManager();
@@ -56,7 +52,6 @@ class PostController
     }
 
     public function deleteChapter($id)
-
         {
             $chapter = new Chapter();
             $chapter->setId($id);
@@ -65,21 +60,22 @@ class PostController
             header ('Location:http://localhost/projet3/gestion-chapitres/');
         }
 
-    public function editChapter(){
-
+    public function editChapter()
+    {
         if(isset($_POST['title'])&& !empty($_POST['title'])&& isset($_POST['chapter_number'])&& !empty($_POST['chapter_number']) && isset($_POST['content'])&& !empty($_POST['content']) && isset($_POST['chapter_id'])&& !empty($_POST['chapter_id']))
-        {
-            $chapter = new Chapter();
-            $chapter->setTitle($_POST['title']);
-            $chapter->setChapterNumber($_POST['chapter_number']);
-            $chapter->setContent($_POST['content']);
-            $chapter->setId($_POST['chapter_id']);
-            $editChapter = new ChapterManager();
-            $editChapter->chapterEdited($chapter);
-            header('Location: http://localhost/projet3/gestion-chapitres/');
-        }
-        else {
+            {
+                $chapter = new Chapter();
+                $chapter->setTitle($_POST['title']);
+                $chapter->setChapterNumber($_POST['chapter_number']);
+                $chapter->setContent($_POST['content']);
+                $chapter->setId($_POST['chapter_id']);
+                $editChapter = new ChapterManager();
+                $editChapter->chapterEdited($chapter);
+                header('Location: http://localhost/projet3/gestion-chapitres/');
+            }
+        else
+            {
             $_SESSION['chapter-error'] = 'Une erreur s\'est produite, veuillez réessayer.' ;
-        }
+            }
     }
 }

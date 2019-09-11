@@ -16,24 +16,27 @@ class ContactController
         require 'src/View/contact.php';
     }
 
-    public function sendMail(){
+    public function sendMail()
     {
-        if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['message']) && !empty($_POST['message']) && isset($_POST['consent']) && !empty($_POST['consent'])) {
-                $contact = new Contact();
-                $contact->setName($_POST['name']);
-                $contact->setEmail($_POST['email']);
-                $contact->setMessage($_POST['message']);
-                $contact->setConsent($_POST['consent']);
-                $addContact = new ContactManager();
-                $addContact->mailAdded($contact);
-                $addContact = new ContactMail();
-                $addContact->sendContactMail($contact);
-                header('Location: <?= HOST ?>contact');
-
-        } else {
-            $_SESSION['contact-error'] = 'Veuillez remplir tous les champs.';
-            header('Location: <?= HOST ?>contact#anchor-contact-error');
+        {
+            if (isset($_POST['name']) && !empty($_POST['name']) && isset($_POST['email']) && !empty($_POST['email']) && isset($_POST['message']) && !empty($_POST['message']) && isset($_POST['consent']) && !empty($_POST['consent']))
+                {
+                        $contact = new Contact();
+                        $contact->setName($_POST['name']);
+                        $contact->setEmail($_POST['email']);
+                        $contact->setMessage($_POST['message']);
+                        $contact->setConsent($_POST['consent']);
+                        $addContact = new ContactManager();
+                        $addContact->mailAdded($contact);
+                        $addContact = new ContactMail();
+                        $addContact->sendContactMail($contact);
+                        header('Location: <?= HOST ?>contact');
+                }
+            else
+                {
+                $_SESSION['contact-error'] = 'Veuillez remplir tous les champs.';
+                header('Location: <?= HOST ?>contact#anchor-contact-error');
+                }
         }
-    }
     }
 }

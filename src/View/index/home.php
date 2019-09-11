@@ -4,11 +4,12 @@ ob_start(); ?>
       <div id="content" class="row content">
           <section class="col-sm-9 ">
 
-              <h4>Le premier chapitre</h4>
+              <h4 class="chapter">Le premier chapitre</h4>
 
               <h5><?= $firstChapter->getTitle(); ?></h5>
               <p class="date">Publié le <?= $firstChapter->getCreationDate(); ?></p>
-              <p><?= substr($firstChapter->getContent(),0 ,1800); ?>... <a href="chapitre/<?= $firstChapter->getId()?>">Lire la suite</a></p>
+              <p><?= substr($firstChapter->getContent(),0 ,1800); ?>... </p>
+              <p><a href="chapitre/<?= $firstChapter->getId()?>" class="button">Lire la suite</a></p>
 
           </section>
 
@@ -40,22 +41,18 @@ ob_start(); ?>
           </section>
       </div>
           <section>
-              <h4>Les trois derniers chapitres</h4>
+              <h4 class="chapter">Les trois derniers chapitres</h4>
               <div class="row"><?php foreach($lastThreeChapters as $tc): ?>
                       <article class="col-md-3 col-md-offset-1">
                           <h5><?= $tc->getTitle(); ?></h5>
                           <p class="date">Publié le <?= $tc->getCreationDate(); ?></p>
-                          <p><?= substr($tc->getContent(),0 ,200); ?>... <a href="chapitre/<?= $tc->getId()?>">Lire la suite</a></p>
+                          <p><?= substr($tc->getContent(),0 ,200); ?>... </p>
+                          <p><a href="chapitre/<?= $tc->getId()?>" class="button">Lire la suite</a></p>
                       </article>
 
                   <?php endforeach; ?>
               </div>
           </section>
 
-
-
-
-<?php
-$content=ob_get_clean();
-require "src/View/template.php";
-?>
+<?php $content=ob_get_clean();?>
+<?php require "src/View/template.php"; ?>

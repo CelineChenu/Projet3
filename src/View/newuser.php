@@ -20,7 +20,5 @@ ob_start(); ?>
         </form>
     </div>
 
-<?php
-$content=ob_get_clean();
-require "src/View/templateadmin.php";
-?><?php
+<?php $content=ob_get_clean();?>
+<?php require "src/View/templateadmin.php"; ?>

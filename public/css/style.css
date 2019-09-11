@@ -21,12 +21,19 @@ body {
     position: relative;
 }
 
+.adminBanner {
+    height:300px;
+    width : 100%;
+    background: url("../img/headeradmin.png");
+    display: block;
+    position: relative;
+}
+
 .headerTitle {
     position: absolute;
     top: 5%;
     left: 10%;
 }
-
 
 .date{
     font-size: 0.875em;
@@ -55,20 +62,87 @@ h5 {
     width: 340px;
     margin: 50px auto;
 }
+
 .login-form form {
     margin-bottom: 15px;
     background: #f7f7f7;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
     padding: 30px;
 }
+
 .login-form h2 {
     margin: 0 0 15px;
 }
+
 .form-control, .btn {
     min-height: 38px;
     border-radius: 2px;
 }
+
 .btn {
     font-size: 15px;
     font-weight: bold;
+}
+
+.admin {
+    font-size: 25px;
+    text-align: center;
+    padding: 20px;
+    color: #17a2b8;
+}
+
+a.button {
+    padding:5px;
+    background: transparent;
+    color: #17a2b8;
+    margin: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #17a2b8;
+}
+
+a.button:hover {
+    padding:5px;
+    background: #17a2b8;
+    color: #FFFFFF;
+    margin: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #17a2b8;
+}
+
+p.chapter {
+    padding: 5px;
+}
+
+h4.chapter {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+h4.comment {
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+p.date {
+    margin-top: 20px;
+}
+
+button.submitBtn {
+    padding:5px;
+    background: transparent;
+    color: #17a2b8;
+    margin: 10px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: #17a2b8;
+}
+
+.socialLink {
+    margin: 2px;
+}
+
+textarea.form-control {
+    min-height : 250px;
 }

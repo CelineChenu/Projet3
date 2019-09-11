@@ -1,7 +1,6 @@
 <?php
 ob_start(); ?>
 
-
     <div class="login-form">
         <form action="http://localhost/projet3/login" method="post">
             <h2 class="text-center">Identification</h2>
@@ -17,7 +16,5 @@ ob_start(); ?>
         </form>
     </div>
 
-<?php
-$content=ob_get_clean();
-require "src/View/template.php";
-?>
+<?php $content=ob_get_clean();?>
+<?php require "src/View/template.php"; ?>

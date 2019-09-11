@@ -1,7 +1,15 @@
         <?php
         session_start();
         require 'vendor/autoload.php';
-        define('HOST', "http://localhost/projet3/");
+        $params = parse_ini_file('params.ini');
+
+        define('HOST', $params['host_base']);
+        define('LOGIN_BDD', $params['login_bdd']);
+        define('HOST_BDD', $params['host_bdd']);
+        define('DB_NAME', $params['db_name']);
+
+        define('PWD_BDD', "");
+
 
         $router = new App\Router\Router($_GET['url']);
 

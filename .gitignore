@@ -3,3 +3,4 @@ vendor/
 .idea/*
 src/Model/DbManager.php
 src/Service/MailLog.php
+params.ini

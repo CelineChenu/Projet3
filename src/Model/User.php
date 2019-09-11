@@ -21,15 +21,18 @@ class User
 
     public function hydrate(array $values)
     {
-        foreach ($values as $key => $value) {
+        foreach ($values as $key => $value)
+        {
             $elements = explode('_', $key);
             $newKey = '';
-            foreach ($elements as $el) {
+            foreach ($elements as $el)
+            {
                 $newKey .= ucfirst($el);
             }
 
             $method = 'set' . ucfirst($newKey);
-            if (method_exists($this, $method)) {
+            if (method_exists($this, $method))
+            {
                 $this->$method($value);
             }
         }

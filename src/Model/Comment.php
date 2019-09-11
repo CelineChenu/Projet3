@@ -17,22 +17,26 @@ class Comment
 
     public function __construct(array $values = null)
     {
-        if ($values != null) {
+        if ($values != null)
+        {
             $this->hydrate($values);
         }
     }
 
     public function hydrate(array $values)
     {
-        foreach ($values as $key => $value) {
+        foreach ($values as $key => $value)
+        {
             $elements = explode('_', $key);
             $newKey = '';
-            foreach ($elements as $el) {
+            foreach ($elements as $el)
+            {
                 $newKey .= ucfirst($el);
             }
 
             $method = 'set' . ucfirst($newKey);
-            if (method_exists($this, $method)) {
+            if (method_exists($this, $method))
+            {
                 $this->$method($value);
             }
         }
@@ -41,7 +45,8 @@ class Comment
     /**
      * @return int
      */
-    public function getId(): ?int {
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
@@ -49,7 +54,8 @@ class Comment
      * @param int $id
      * @return $this
      */
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         $this->id = $id;
         return $this;
     }
@@ -57,15 +63,18 @@ class Comment
     /**
      * @return string
      */
-    public function getContent(): ?string{
+    public function getContent(): ?string
+    {
         return $this->content;
     }
     /**
      * @param string $content
      * @return $this
      */
-    public function setContent(string $content){
-        if (is_string($content)) {
+    public function setContent(string $content)
+    {
+        if (is_string($content))
+        {
             $this->content = $content;
         }
         return $this;
@@ -74,7 +83,8 @@ class Comment
     /**
      * @return string
      */
-    public function getUsername(): ?string{
+    public function getUsername(): ?string
+    {
         return $this->username;
     }
 
@@ -105,7 +115,8 @@ class Comment
     /**
      * @return int
      */
-    public function getChapterId(): ?int{
+    public function getChapterId(): ?int
+    {
         return $this->chapterId;
     }
 

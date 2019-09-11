@@ -17,23 +17,28 @@ class Chapter
 
 
 
-    public function __construct($values = null){
-        if ($values != null) {
+    public function __construct($values = null)
+    {
+        if ($values != null)
+        {
             $this->hydrate($values);
         }
-        }
+    }
 
     public function hydrate(array $values)
     {
-        foreach ($values as $key => $value) {
+        foreach ($values as $key => $value)
+        {
             $elements = explode('_', $key);
             $newKey = '';
-            foreach ($elements as $el) {
+            foreach ($elements as $el)
+            {
                 $newKey .= ucfirst($el);
             }
 
             $method = 'set' . ucfirst($newKey);
-            if (method_exists($this, $method)) {
+            if (method_exists($this, $method))
+            {
                 $this->$method($value);
             }
         }
@@ -43,7 +48,8 @@ class Chapter
     /**
      * @return int
      */
-    public function getId(): ?int {
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
@@ -51,7 +57,8 @@ class Chapter
      * @param int $id
      * @return $this
      */
-    public function setId (int $id){
+    public function setId (int $id)
+    {
         $this->id = $id;
         return $this;
     }
@@ -59,7 +66,8 @@ class Chapter
     /**
      * @return string
      */
-    public function getTitle(): ?string {
+    public function getTitle(): ?string
+    {
         return $this->title;
     }
 
@@ -67,7 +75,8 @@ class Chapter
      * @param string $title
      * @return $this
      */
-    public function setTitle(string $title){
+    public function setTitle(string $title)
+    {
         $this->title = $title;
         return $this;
     }
@@ -76,7 +85,8 @@ class Chapter
     /**
      * @return string $content
      */
-    public function getContent(): ?string {
+    public function getContent(): ?string
+    {
         return $this->content;
     }
 
@@ -84,10 +94,10 @@ class Chapter
      * @param string $content
      * @return $this
      */
-    public function setContent(string $content){
+    public function setContent(string $content)
+    {
         $this->content = $content;
         return $this;
-
     }
 
     /**
