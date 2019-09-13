@@ -69,7 +69,7 @@ class UserController
         if (! isset($_SESSION['auth'])) {header('Location:http://localhost/projet3/identification');}
         $chapterManager = new ChapterManager();
         $commentManager = new CommentManager();
-        $chapters = $chapterManager->getAdminChapters();
+        $adminChapters = $chapterManager->getAdminChapters();
         $comments = $commentManager->lastComments();
         $numberReport = $commentManager->numberReports();
         $numberComment = $commentManager->numberComment();

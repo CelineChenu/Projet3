@@ -68,12 +68,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (is_array($chapters)): ?>
-                        <?php foreach ($chapters as $data): ?>
+                    <?php if (is_array($adminChapters)): ?>
+                        <?php foreach ($adminChapters as $ac): ?>
                             <tr>
-                                <td><?= htmlspecialchars_decode($data['chapter_number']); ?></td>
-                                <td> <?= nl2br(htmlspecialchars_decode($data['title'])) ?> </td>
-                                <td> <?= $data['creationDate'] ?> </td>
+                                <td><?= htmlspecialchars_decode($ac->getChapterNumber()); ?></td>
+                                <td> <?= nl2br(htmlspecialchars_decode($ac->getTitle())) ?> </td>
+                                <td> <?= $ac->getCreationDate() ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>
@@ -97,16 +97,17 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <?php if (is_array($comments)): ?>
-                        <?php foreach ($comments as $data_comment): ?>
+
+                        <?php foreach ($comments as $c): ?>
+
                             <tr>
-                                <td><?= htmlspecialchars($data_comment['username']); ?></td>
-                                <td> <?= nl2br(htmlspecialchars(substr($data_comment['content'], 0, 100))) ?> </td>
-                                <td> Chapitre <?= $data_comment['chapter_id'] ?> </td>
-                                <td> <?= $data_comment['commentDate'] ?> </td>
+                                <td><?= htmlspecialchars($c->getUsername()); ?></td>
+                                <td> <?= nl2br(htmlspecialchars(substr($c->getContent(), 0, 100))) ?> </td>
+                                <td> Chapitre <?= $c->getChapterId() ?> </td>
+                                <td> <?= $c->getCommentDate() ?> </td>
                             </tr>
                         <?php endforeach; ?>
-                    <?php endif; ?>
+
                     </tbody>
                 </table>
             </div>

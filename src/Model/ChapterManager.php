@@ -8,28 +8,30 @@ use \PDO;
 class ChapterManager extends DbManager
 {
 
-    private $db;
-    public function __construct()
+    protected $db;
+
+    /*public function __construct()
     {
         $this->db=self::dbConnection();
-    }
-
-    public function getChapters()
-    {
-        $req = $this->db->query('SELECT * FROM chapter');
-        $result = $req->fetchAll(PDO::FETCH_ASSOC);
-        return $result;
-    }
+    }*/
 
     public function getAdminChapters()
     {
         $req = $this->db->query('SELECT id, chapter_number, title, content, DATE_FORMAT(creation_date,\'le %d/%m/%Y à %H:%i\') 
-        AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 3');
-        return $req->fetchAll();
+        AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 5');
+        $result = $req->fetchAll(PDO::FETCH_ASSOC);
+        $adminChapters = [];
+        foreach($result as $data)
+        {
+            $chapter = new Chapter($data);
+            $adminChapters[] = $chapter;
+        }
+        return $adminChapters;
     }
 
     public function getLastChapter()
     {
+
         $req=$this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 1');
         $result = $req->fetch(PDO::FETCH_ASSOC);
         $lastChapters = new Chapter($result);
@@ -59,7 +61,7 @@ class ChapterManager extends DbManager
 
     public function getLastThreeChapters()
     {
-        $req=$this->db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 3');
+        $req=$this->db->query('SELECT id, title, content, chapter_number, DATE_FORMAT(creation_date, \'%d/%m/%Y\') AS creationDate FROM chapter ORDER BY creation_date DESC LIMIT 0, 3');
         $result = $req->fetchAll(PDO::FETCH_ASSOC);
         $threeChapters = [];
         foreach($result as $data)

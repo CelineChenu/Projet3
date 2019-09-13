@@ -8,7 +8,7 @@ use \PDO;
 abstract class DbManager
 {
 
-    /*protected $db;
+    protected $db;
 
     public function __construct() {
         try
@@ -19,10 +19,10 @@ abstract class DbManager
         {
             die($e->getMessage());
         }
-        return $this->db;
+        return $this->db = $db;
     }
 
-    */
+    /*
     protected function dbConnection()
     {
         try
@@ -34,5 +34,5 @@ abstract class DbManager
             die($e->getMessage());
         }
         return $db;
-    }
+    }*/
 }

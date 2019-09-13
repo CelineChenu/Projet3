@@ -8,6 +8,7 @@ use App\Model\ChapterManager;
 
 class HomeController
 {
+
     public function home()
     {
         $chapter = new ChapterManager();

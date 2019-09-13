@@ -30,12 +30,14 @@ class ContactController
                         $addContact->mailAdded($contact);
                         $addContact = new ContactMail();
                         $addContact->sendContactMail($contact);
-                        header('Location: <?= HOST ?>contact');
+
+                        echo 'Votre message a bien été envoyé';
+                        header('Location: http://localhost/projet3/contact');
                 }
             else
                 {
                 $_SESSION['contact-error'] = 'Veuillez remplir tous les champs.';
-                header('Location: <?= HOST ?>contact#anchor-contact-error');
+                header('Location: http://localhost/projet3/contact#anchor-contact-error');
                 }
         }
     }

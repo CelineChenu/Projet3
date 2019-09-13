@@ -7,11 +7,11 @@ use \PDO;
 
 class ContactManager extends DbManager
 {
-    private $db;
-    public function __construct()
+    protected $db;
+   /* public function __construct()
     {
         $this->db=self::dbConnection();
-    }
+    }*/
 
     public function mailAdded(Contact $contact)
     {

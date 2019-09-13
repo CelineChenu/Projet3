@@ -8,11 +8,11 @@ use \PDO;
 
 class UserManager extends DbManager
 {
-    private $db;
-    public function __construct()
+    protected $db;
+    /*public function __construct()
     {
         $this->db=self::dbConnection();
-    }
+    }*/
 
     public function getUserByName($login)
     {
