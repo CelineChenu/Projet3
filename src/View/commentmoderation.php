@@ -12,8 +12,8 @@
                 <p class="date">Commentaire posté le <?= $cr->getCommentDate(); ?> : </p>
                 <p class="username"> Par <?= htmlspecialchars($cr->getUsername()) ; ?></p>
                 <p class="content"><?= htmlspecialchars($cr->getContent()) ; ?></p>
-                <a title="Valider ce commentaire" href="<?= HOST ?>valider-commentaire/<?= $cr->getId(); ?>" onclick="return confirm('Êtes-vous sûr.e de vouloir valider ce commentaire ?')" class="button"> <i class="fas fa-check-circle"></i> Valider le commentaire</a>
-                <a title="Modérer ce commentaire" href="<?= HOST ?>moderer-commentaire/<?= $cr->getId(); ?>" onclick="return confirm('Êtes-vous sûr.e de vouloir modérer ce commentaire ?')" class="button"><i class="fas fa-times-circle"></i> Modérer le commentaire</a>
+                <a title="Valider ce commentaire" href="<?= HOST ?>valider-commentaire/<?= $cr->getId(); ?>" id="validCommentButton" class="button"> <i class="fas fa-check-circle"></i> Valider le commentaire</a>
+                <a title="Modérer ce commentaire" href="<?= HOST ?>moderer-commentaire/<?= $cr->getId(); ?>" id="moderateCommentButton" class="button"><i class="fas fa-times-circle"></i> Modérer le commentaire</a>
             </div>
         <?php endforeach; ?>
         <?php endif; ?>
@@ -56,6 +56,23 @@
             return false;
         }
 
+    });
+    
+    $('#validCommentButton').click(function() {
+        if(confirm('Êtes-vous sûr.e de vouloir valider ce commentaire ?')) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    
+     $('#moderateCommentButton').click(function() {
+        if(confirm('Êtes-vous sûr.e de vouloir modérer ce commentaire ?')) {
+            return true;
+        } else {
+            return false;
+        }
+    
     });
 
 
