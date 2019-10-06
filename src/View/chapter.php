@@ -54,10 +54,8 @@ ob_start(); ?>
                     echo htmlspecialchars($co->getContent());
                     ?>
                 </p>
-                <a title="Signaler ce commentaire" href="<?= HOST ?>signaler-commentaire/<?= $result->getId(); ?>-<?= $co->getId(); ?>" onclick="return confirm('Êtes-vous sûr.e de vouloir signaler ce commentaire ?')" class="button">
-                    Signaler ce commentaire
-                    <i class="fas fa-exclamation-triangle"></i>
-                </a>
+
+                <a title="Signaler ce commentaire" href="<?= HOST ?>signaler-commentaire/<?= $result->getId(); ?>-<?= $co->getId(); ?>" class="button cm-reportButton"><i class="fas fa-exclamation-triangle"></i> Signaler ce commentaire</a>
                     <?php endif; ?>
             </div>
 
@@ -94,3 +92,17 @@ ob_start(); ?>
 
 <?php $content=ob_get_clean();?>
 <?php require "src/View/template.php"; ?>
+
+<script>
+
+$('.cm-reportButton').click(function() {
+if(confirm('Êtes-vous sûr.e de vouloir signaler ce commentaire ?')) {
+return true;
+} else {
+return false;
+}
+
+});
+
+</script>
+

@@ -13,10 +13,7 @@
                     <i class="far fa-edit"></i>
                     Modifier le chapitre
                 </a>
-                <a title="Supprimer ce chapitre" href="<?= HOST ?>supprimer-chapitre/<?= $c->getId(); ?> " class="button" onclick="return confirm('Êtes-vous sûr.e de vouloir supprimer ce chapitre ?')">
-                    <i class="far fa-trash-alt"></i>
-                    Supprimer le chapitre
-                </a>
+                <a title="Supprimer ce chapitre" href="<?= HOST ?>supprimer-chapitre/<?= $c->getId(); ?> " class="button cp-deleteButton" <i class="far fa-trash-alt"></i> Supprimer le chapitre </a>
             <?php endforeach; ?>
         </section>
 
@@ -30,3 +27,16 @@
 
 <?php $content=ob_get_clean();?>
 <?php require "src/View/templateadmin.php"; ?>
+
+<script>
+
+    $('.cp-deleteButton').click(function() {
+        if(confirm('Êtes-vous sûr.e de vouloir supprimer ce chapitre ?')) {
+            return true;
+        } else {
+            return false;
+        }
+
+    });
+
+</script>

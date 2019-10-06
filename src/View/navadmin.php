@@ -7,7 +7,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
 
-                <a class="nav-item nav-link" href="administration">Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="<?= HOST ?>administration">Accueil <span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="<?= HOST ?>gestion-chapitres">Gestion des chapitres</a>
                 <a class="nav-item nav-link" href="<?= HOST ?>moderation">Modération des commentaires</a>
                 <a class="nav-item nav-link" href="<?= HOST ?>logout"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>

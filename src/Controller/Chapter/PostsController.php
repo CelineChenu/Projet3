@@ -3,7 +3,6 @@
 
 namespace App\Controller\Chapter;
 
-
 use App\Model\ChapterManager;
 
 class PostsController

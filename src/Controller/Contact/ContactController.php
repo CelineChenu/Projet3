@@ -31,7 +31,6 @@ class ContactController
                         $addContact = new ContactMail();
                         $addContact->sendContactMail($contact);
 
-                        echo 'Votre message a bien été envoyé';
                         header('Location: http://localhost/projet3/contact');
                 }
             else

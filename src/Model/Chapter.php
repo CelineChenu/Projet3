@@ -15,8 +15,6 @@ class Chapter
     private $comments=[];
 
 
-
-
     public function __construct($values = null)
     {
         if ($values != null)

@@ -154,4 +154,6 @@ class ChapterManager extends DbManager
         return $deleteChapter;
     }
 
+
+
 }

@@ -7,9 +7,9 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div class="navbar-nav">
 
-                <a class="nav-item nav-link" href="/"><i class="fas fa-igloo"></i>Accueil <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="chapitres">Chapitres</a>
-                <a class="nav-item nav-link" href="contact">Contact</a>
+                <a class="nav-item nav-link" href="<?= HOST ?>"><i class="fas fa-igloo"></i>Accueil <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="<?= HOST ?>chapitres">Chapitres</a>
+                <a class="nav-item nav-link" href="<?= HOST ?>contact">Contact</a>
                 <a class="nav-item nav-link" href="<?= HOST ?>identification"><i class="fas fa-sign-in-alt"></i> Connexion</a>
 
             </div>
